@@ -142,8 +142,12 @@ To accomplish that last task, we need a specialty function, `n`. Here's how it w
 
 ```{r}
 movies %>%
-  summarize(n())
+  mutate(per_low = r1 + r2 + r3 + r4) %>%
+  filter(per_low > 50, votes > 5) %>%
+  summarize(bad_movies_count = n())
 ```
+
+To paraphrase my code I took the percentages of people who rated movies 4 and below which is r1 - r4. r5 - r10 are high ratings so they are excluded. I filtered it so that the votes as anything lower than 5 and above 50%. This gave me 4753 movies. 
 
 - what is the average length of movies in the dataset, in hours? 
 - can you find a second way to compute the average length, by flipping the order of commands (i.e., `summarize` first and then `mutate`)?
