@@ -70,8 +70,15 @@ You may want to look at the "data transformation with dplyr" cheatsheet to revie
 
 ```{r eval=FALSE}
 movies %>%
-  summarize(# fill in some commands here!)
+  summarize(
+    earliest_year = min(year, na.rm = TRUE),
+    avg_length = mean(length, na.rm = TRUE),
+    sd_length = sd(length, na.rm = TRUE)
+  )
 ```
+
+The earliest movie in the dataset was released in the year 1893. The average length of movies is approximately 82.34 minutes. The standard deviation of the length of the movies is around 44.35 minutes.
+
 
 ## Question 2
 
