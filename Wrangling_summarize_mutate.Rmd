@@ -90,11 +90,16 @@ We already know how to compute the average length of movies overall. What we nee
 
 ```{r eval=FALSE}
 movies %>%
-  group_by(Action) %>%
-  # move your summarize code from the last exercise here!
+  group_by(Action) %>%  
+  summarize(
+    avg_length = mean(length, na.rm = TRUE),
+    count = n()                               
+  )
 ```
 
 Which movies are longer, action movies or non-action movies? 
+
+Action movies are generally longer than non-action movies, with an average length of 98.99 minutes compared to 80.89 minutes.
 
 ### Question 3
 
