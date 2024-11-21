@@ -118,7 +118,7 @@ short_movies <- movies %>%
 short_movies
 ```
 
-From the
+Movies that are "Short" are indeed much shorter than other movies, with an average length of only 13.97 minutes compared to 95.45 minutes for non-short movies. Both have their minimum length at 1.
 
 ## mutate
 
