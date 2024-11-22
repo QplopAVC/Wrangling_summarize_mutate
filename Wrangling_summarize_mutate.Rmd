@@ -5,7 +5,7 @@ author: "Quintin Burnett"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 # Don't forget to load your libraries
 library(tidyverse)
 library(ggplot2movies)
@@ -68,7 +68,7 @@ Now, you try it!
 
 You may want to look at the "data transformation with dplyr" cheatsheet to review some possible summary functions. 
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 movies %>%
   summarize(
     earliest_year = min(year, na.rm = TRUE),
@@ -88,7 +88,7 @@ This is useful if want to compute summary statistics by group. For example, we m
 
 We already know how to compute the average length of movies overall. What we need to add to our pipeline is a `group_by`
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 movies %>%
   group_by(Action) %>%  
   summarize(
@@ -108,7 +108,7 @@ Investigate the movies classified as Short. Are they actually shorter than other
 - What is the average length? 
 - What is the minimum length?
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 short_movies <- movies %>%
   group_by(Short) %>%
   summarize(
@@ -142,7 +142,7 @@ Let's read this code carefully.
 
 The variables `r1`, `r2`, ..., `r10` give you the percent of people who rated that movie a 1, 2, ..., 10. We would like to know the percent of people who rated the movie a 4 or less (i.e., who rated it a 1, 2, 3, or 4). Create a new variable called `per_low` that computes that number.
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 movies %>%
   mutate(per_low = (r1 + r2 + r3 + r4) / 100 * 100) %>%
   select(title, year, per_low) %>%
