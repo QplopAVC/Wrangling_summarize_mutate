@@ -164,14 +164,24 @@ To accomplish that last task, we need a specialty function, `n`. Here's how it w
 ```{r}
 bad_movies_average <- movies %>%
   filter(rating < 5 & votes > 5) %>%
-  select(title, rating, votes)
-bad_movies_average
+  select(title, rating, votes) %>%
+  summarize(
+    average_rating = mean(rating, na.rm = TRUE),
+    average_votes = mean(votes, na.rm = TRUE),
+    bad_movies_count = n()
+  )
 
 bad_movies_ratings <- movies %>%
   mutate(per_low = r1 + r2 + r3 + r4) %>%
   filter(per_low > 50, votes > 5) %>%
-  summarize(bad_movies_count = n())
+  summarize(
+    bad_movies_count = n(),
+    average_per_low = mean(per_low, na.rm = TRUE)
+  )
+
+bad_movies_average
 bad_movies_ratings
+
 ```
 
 To paraphrase my code I took the percentages of people who rated movies 4 and below which is r1 - r4. r5 - r10 are high ratings so they are excluded. I filtered it so that the votes as anything lower than 5 and above 50%. This gave me 4753 movies. I have another piece of code that uses the rating column to show the average ratings of the movies that are bad. Under the average it shows the average movies that are low rated are 13518 from the average rating being 1-10. My code is a rating under 5. 
