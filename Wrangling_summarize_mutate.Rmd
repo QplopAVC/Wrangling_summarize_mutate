@@ -143,8 +143,10 @@ Let's read this code carefully.
 The variables `r1`, `r2`, ..., `r10` give you the percent of people who rated that movie a 1, 2, ..., 10. We would like to know the percent of people who rated the movie a 4 or less (i.e., who rated it a 1, 2, 3, or 4). Create a new variable called `per_low` that computes that number.
 
 ```{r eval=FALSE}
-movies <- movies %>%
-  mutate(per_low = r1 + r2 + r3 + r4)
+movies %>%
+  mutate(per_low = (r1 + r2 + r3 + r4) / 100 * 100) %>%
+  select(title, year, per_low) %>%
+  head(10)
 ```
 
 My code adds up all the percentages of people who gave a rating of 1 to 4.
