@@ -189,3 +189,18 @@ To paraphrase my code I took the percentages of people who rated movies 4 and be
 - what is the average length of movies in the dataset, in hours? 
 - can you find a second way to compute the average length, by flipping the order of commands (i.e., `summarize` first and then `mutate`)?
 
+```{r}
+average_length_hours <- movies %>%
+  summarize(average_length = mean(length, na.rm = TRUE)) %>%
+  mutate(average_length_hours_summarize = average_length / 60)
+
+average_length_hours_flipped <- movies %>%
+  mutate(length_hours = length / 60) %>%
+  summarize(average_length_hours_mutate = mean(length_hours, na.rm = TRUE))
+
+average_length_hours
+average_length_hours_flipped
+
+```
+
+The average length of the movies is 1.37 hours.
